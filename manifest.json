@@ -1,0 +1,10 @@
+{
+  "name": "Amountify",
+  "id": "1091267896551604658",
+  "api": "1.0.0",
+  "main": "code.js",
+  "editorType": [
+    "figma", "figjam"
+  ],
+  "ui": "ui.html"
+}

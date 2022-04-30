@@ -1,0 +1,15 @@
+{
+  "name": "Amountify",
+  "version": "1.0.0",
+  "description": "Insert random amounts of money into your designs.",
+  "main": "code.js",
+  "scripts": {
+    "build": "tsc -p tsconfig.json"
+  },
+  "author": "",
+  "license": "",
+  "devDependencies": {
+    "@figma/plugin-typings": "^1.43.0",
+    "typescript": "*"
+  }
+}

@@ -1,0 +1,326 @@
+<style>
+
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@500;600&family=Libre+Baskerville:wght@700&display=swap');
+  
+  body {
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    background-image: url('https://s3.eu-west-1.amazonaws.com/www.kishpatel.com/public-assets/bg-usd.jpg');
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+  }
+
+  .bg-usd {
+    background-image: url('https://s3.eu-west-1.amazonaws.com/www.kishpatel.com/public-assets/bg-usd.jpg');
+  }
+
+  .bg-gbp {
+    background-image: url('https://s3.eu-west-1.amazonaws.com/www.kishpatel.com/public-assets/bg-gbp.jpg');
+  }
+
+  .bg-eur {
+    background-image: url('https://s3.eu-west-1.amazonaws.com/www.kishpatel.com/public-assets/bg-eur.jpg');
+  }
+
+  .container {
+    margin-top: 48px;
+  }
+
+  .container-decimals {
+    margin-top: 32px;
+  }
+
+  .container-currency-symbol {
+    margin-top: 16px;
+  }
+
+  h1 {
+    font-weight: 600;
+    font-size: 40px;
+    line-height: 48px;
+    color: #000000;
+    margin-top: 0;
+    margin-bottom: 32px;
+    font-family: 'Libre Baskerville', serif;
+  }
+
+  h5, p {
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+    color: #888888;
+    margin-top: 0;
+    margin-bottom: 8px;
+  }
+
+  .text-center {
+    text-align: center;
+  }
+
+  .no-margin {
+    margin: 0;
+  }
+
+  .flex {
+    display: flex;
+    align-items: center;
+  }
+
+  .flex-fill-space {
+    flex-grow: 1;
+    margin-bottom: 0;
+  }
+
+  form {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    width: 100%;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  form input[type=radio] {
+    display: none;
+  }
+
+  form label {
+    padding: 8px 0 8px 0;
+    cursor: pointer;
+    background-color: rgba(238, 238, 238, 0.4);;
+    text-align: center;
+    flex: 1;
+    font-size: 12px;
+    line-height: 16px;
+  }
+
+  form label:hover {
+    background-color: rgba(238, 238, 238, 0.8);;
+  }
+
+  form input[type=radio]:checked + label {
+    background: #000;
+    color: #fff;
+    font-weight: 600;
+  }
+
+  form input[type=radio]:disabled + label {
+      opacity: 0.6;
+      cursor: auto;
+  }
+
+  /* Switch */
+
+  input[type="checkbox"].switch-input {
+    height: 0;
+    width: 0;
+    visibility: hidden;
+  }
+
+  label.label-input {
+    cursor: pointer;
+    text-indent: -9999px;
+    width: 40px;
+    height: 24px;
+    background: #C4C4C4;
+    display: inline-block;
+    border-radius: 100px;
+    position: relative;
+  }
+
+  label.label-input:after {
+    content: "";
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 20px;
+    height: 20px;
+    background: #fff;
+    border-radius: 10px;
+    transition: 0.15s;
+  }
+
+  input.switch-input:checked + label.label-input {
+    background: #0091FF;
+  }
+
+  input.switch-input:checked + label.label-input:after {
+    left: calc(100% - 2px);
+    transform: translateX(-100%);
+  }
+
+  label.label-input:hover:after {
+    width: 24px;
+  }
+
+  label.label-input:active:after {
+    width: 28px;
+  }
+
+  /* Button */
+
+  .btn-block {
+    cursor: pointer;
+    padding: 12px 0 12px 0;
+    border: 0;
+    background: #0091FF;
+    border-radius: 4px;
+    display: block;
+    width: 100%;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 16px;
+    color: #FFFFFF;
+    margin: 32px 0 24px 0;
+  }
+
+  .btn-block:hover {
+    background: #0074CC;
+  }
+  
+  .btn-block:active {
+    background: #005799;
+  }
+
+  a, a:visited {
+    color: #0091FF;
+  } 
+
+  a:hover {
+    color: #0074CC;
+  }
+
+  a:active {
+    color: #005799;
+  }
+
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+
+</style>
+
+<div class="container" id="bg-header">
+  <h5 class="text-center no-margin">Preview</h5>
+  <h1 class="text-center tabular"><span id="preview-label-currency">$</span><span id="preview-label-amount-whole">1</span><span id="preview-label-amount-decimal">.23</span></h1>
+
+  <h5>Currency</h5>
+  <form id="currency-group">
+    <input type="radio" id="usd" name="ccy" value="$" checked>
+    <label for="usd">$</label>
+    <input type="radio" id="gbp" name="ccy" value="£">
+    <label for="gbp">£</label>
+    <input type="radio" id="eur" name="ccy" value="€">
+    <label for="eur">€</label>
+    <!-- <input type="radio" id="jpy" name="ccy" value="¥">
+    <label for="jpy">¥</label>
+    <input type="radio" id="btc" name="ccy" value="₿">
+    <label for="btc">₿</label> -->
+  </form>
+
+  <h5>Size</h5>
+  <form id="size-group">
+    <input type="radio" id="units" name="size" value="units" checked>
+    <label for="units">1</label>
+    <input type="radio" id="tens" name="size" value="tens">
+    <label for="tens">10</label>
+    <input type="radio" id="hundreds" name="size" value="hundreds">
+    <label for="hundreds">100</label>
+    <input type="radio" id="thousands" name="size" value="thousands">
+    <label for="thousands">1000</label>
+  </form>
+
+  <div class="flex container-decimals">
+    <h5 class="flex-fill-space">Decimals</h5>
+    <input class="switch-input" type="checkbox" id="decimal-checkbox" checked><label class="label-input" for="decimal-checkbox">Decimals Toggle</label>
+  </div>
+
+  <div class="flex container-currency-symbol">
+    <h5 class="flex-fill-space">Currency symbol</h5>
+    <input class="switch-input" type="checkbox" id="currency-symbol-checkbox" checked><label class="label-input" for="currency-symbol-checkbox">Currency Symbol Toggle</label>
+  </div>
+
+  <button class="btn-block" id="submit">Amountify selected layers</button>
+</div>
+
+
+
+<p class="text-center">Made by <a href="https://twitter.com/TheKishPatel" target="_blank">Kish</a></p>
+<script>
+
+document.getElementById('submit').onclick = () => {
+  const currencyCode = document.querySelector('input[name="ccy"]:checked').value;
+  const sizeOfNumber = document.querySelector('input[name="size"]:checked').value;
+  const hasDecimals = document.getElementById('decimal-checkbox').checked; 
+  const hasCcyCode = document.getElementById('currency-symbol-checkbox').checked;
+  parent.postMessage({ pluginMessage: { 
+    type: 'submit-layers', 
+    currencyCode: currencyCode, 
+    sizeOfNumber: sizeOfNumber, 
+    hasDecimals: hasDecimals, 
+    hasCcyCode: hasCcyCode
+  }}, '*')
+}
+
+document.getElementById('usd').onclick = () => {
+  removeAllBackgrounds();
+  document.body.classList.add("bg-usd");
+  document.getElementById('preview-label-currency').innerHTML = "$"
+}
+
+document.getElementById('gbp').onclick = () => {
+  removeAllBackgrounds();
+  document.body.classList.add("bg-gbp");
+  document.getElementById('preview-label-currency').innerHTML = "£"
+}
+
+document.getElementById('eur').onclick = () => {
+  removeAllBackgrounds();
+  document.body.classList.add("bg-eur");
+  document.getElementById('preview-label-currency').innerHTML = "€"
+}
+
+document.getElementById('units').onclick = () => {
+  document.getElementById('preview-label-amount-whole').innerHTML = "1"
+  document.getElementById('preview-label-amount-decimal').innerHTML = ".23"
+}
+
+document.getElementById('tens').onclick = () => {
+  document.getElementById('preview-label-amount-whole').innerHTML = "12"
+  document.getElementById('preview-label-amount-decimal').innerHTML = ".34"
+}
+
+document.getElementById('hundreds').onclick = () => {
+  document.getElementById('preview-label-amount-whole').innerHTML = "123"
+  document.getElementById('preview-label-amount-decimal').innerHTML = ".45"
+}
+
+document.getElementById('thousands').onclick = () => {
+  document.getElementById('preview-label-amount-whole').innerHTML = "1,234"
+  document.getElementById('preview-label-amount-decimal').innerHTML = ".56"
+}
+
+document.getElementById('decimal-checkbox').onclick = () => {
+  if (document.getElementById('decimal-checkbox').checked) {
+    document.getElementById('preview-label-amount-decimal').style.display = "inline-block";
+  } else {
+    document.getElementById('preview-label-amount-decimal').style.display = "none";
+  }
+}
+
+document.getElementById('currency-symbol-checkbox').onclick = () => {
+  if (document.getElementById('currency-symbol-checkbox').checked) {
+    document.getElementById('preview-label-currency').style.display = "inline-block";
+  } else {
+    document.getElementById('preview-label-currency').style.display = "none";
+  }
+}
+
+function removeAllBackgrounds() {
+  document.body.classList.remove("bg-usd");
+  document.body.classList.remove("bg-gbp");
+  document.body.classList.remove("bg-eur");
+}
+
+</script>
