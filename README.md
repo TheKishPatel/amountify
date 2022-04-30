@@ -2,7 +2,7 @@
 
 A simple plugin to generate random currency values into Figma, made by [Kish Patel](https://kishpatel.com).
 
-![](images/cover.png)
+![](images/cover.jpg)
 
 ## Setup
 
