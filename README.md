@@ -1,4 +1,4 @@
-# Random Numberizer
+# Amountify
 
 A simple plugin to generate random currency values into Figma, made by [Kish Patel](https://kishpatel.com).
 
