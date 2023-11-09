@@ -31,7 +31,7 @@
     margin-top: 32px;
   }
 
-  .container-currency-symbol {
+  .container-currency-symbol, .container-percent-symbol {
     margin-top: 16px;
   }
 
@@ -203,7 +203,9 @@
 
 <div class="container" id="bg-header">
   <h5 class="text-center no-margin">Preview</h5>
-  <h1 class="text-center tabular"><span id="preview-label-currency">$</span><span id="preview-label-amount-whole">1</span><span id="preview-label-amount-decimal">.23</span></h1>
+  <h1 class="text-center tabular">
+    <span id="preview-label-currency">$</span><span id="preview-label-amount-whole">1</span><span id="preview-label-amount-decimal">.23</span><span id="preview-label-percent">%</span>
+  </h1>
 
   <h5>Currency</h5>
   <form id="currency-group">
@@ -241,6 +243,11 @@
     <input class="switch-input" type="checkbox" id="currency-symbol-checkbox" checked><label class="label-input" for="currency-symbol-checkbox">Currency Symbol Toggle</label>
   </div>
 
+  <div class="flex container-percent-symbol">
+    <h5 class="flex-fill-space">Percent symbol</h5>
+    <input class="switch-input" type="checkbox" id="percent-symbol-checkbox" checked><label class="label-input" for="percent-symbol-checkbox">Percent Symbol Toggle</label>
+  </div>
+
   <button class="btn-block" id="submit">Amountify selected layers</button>
 </div>
 
@@ -254,12 +261,14 @@ document.getElementById('submit').onclick = () => {
   const sizeOfNumber = document.querySelector('input[name="size"]:checked').value;
   const hasDecimals = document.getElementById('decimal-checkbox').checked; 
   const hasCcyCode = document.getElementById('currency-symbol-checkbox').checked;
+  const hasPercent = document.getElementById('percent-symbol-checkbox').checked;
   parent.postMessage({ pluginMessage: { 
     type: 'submit-layers', 
     currencyCode: currencyCode, 
     sizeOfNumber: sizeOfNumber, 
     hasDecimals: hasDecimals, 
-    hasCcyCode: hasCcyCode
+    hasCcyCode: hasCcyCode,
+    hasPercent: hasPercent
   }}, '*')
 }
 
@@ -314,6 +323,14 @@ document.getElementById('currency-symbol-checkbox').onclick = () => {
     document.getElementById('preview-label-currency').style.display = "inline-block";
   } else {
     document.getElementById('preview-label-currency').style.display = "none";
+  }
+}
+
+document.getElementById('percent-symbol-checkbox').onclick = () => {
+  if (document.getElementById('percent-symbol-checkbox').checked) {
+    document.getElementById('preview-label-percent').style.display = "inline-block";
+  } else {
+    document.getElementById('preview-label-percent').style.display = "none";
   }
 }
 

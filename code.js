@@ -58,6 +58,8 @@ figma.ui.onmessage = (msg) => __awaiter(this, void 0, void 0, function* () {
                 }
                 else { }
                 let amount = getRandomAmount(numberSize, msg.hasDecimals);
+                let ccyCodeString = (msg.hasCcyCode) ? msg.currencyCode : '';
+                let percentString = (msg.hasPercent) ? '%' : '';
                 // Add comma to thousands number
                 if (msgSize == "thousands") {
                     let insertAtPosition = 1;
@@ -65,10 +67,10 @@ figma.ui.onmessage = (msg) => __awaiter(this, void 0, void 0, function* () {
                     let arrGivenString = [...amount];
                     arrGivenString.splice(insertAtPosition, 0, stringToInsert);
                     let output = arrGivenString.join('');
-                    node.characters = (msg.hasCcyCode) ? msg.currencyCode + output : output;
+                    node.characters = ccyCodeString + output + percentString;
                 }
                 else {
-                    node.characters = (msg.hasCcyCode) ? msg.currencyCode + amount : amount;
+                    node.characters = ccyCodeString + amount + percentString;
                 }
             }
             if (numberOfTextLayers === 0) {
@@ -84,6 +86,7 @@ figma.ui.onmessage = (msg) => __awaiter(this, void 0, void 0, function* () {
     function getRandomAmount(size, hasDecimals) {
         var precision = 0;
         var multiplier = 0;
+        var randomAmount = '';
         if (size == unitsNumber) {
             precision = (hasDecimals) ? 100 : 1;
             multiplier = 1;

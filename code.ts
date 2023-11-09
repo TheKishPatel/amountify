@@ -64,6 +64,8 @@ figma.ui.onmessage = async msg => {
         } else { }
 
         let amount = getRandomAmount(numberSize, msg.hasDecimals);
+        let ccyCodeString = (msg.hasCcyCode) ? msg.currencyCode : '';
+        let percentString = (msg.hasPercent) ? '%' : '';
 
         // Add comma to thousands number
         if (msgSize == "thousands") {
@@ -75,11 +77,10 @@ figma.ui.onmessage = async msg => {
 
           let output = arrGivenString.join('');
         
-          node.characters = (msg.hasCcyCode) ? msg.currencyCode + output : output;
+          node.characters = ccyCodeString + output + percentString;
         
         } else {
-
-          node.characters = (msg.hasCcyCode) ? msg.currencyCode + amount : amount;
+          node.characters = ccyCodeString + amount + percentString;
         }
       }
 
@@ -100,6 +101,7 @@ figma.ui.onmessage = async msg => {
 
     var precision = 0;
     var multiplier = 0;
+    var randomAmount = '';
 
     if (size == unitsNumber) {
       precision = (hasDecimals) ? 100 : 1;
